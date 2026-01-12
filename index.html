@@ -3,10 +3,38 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
- <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <title>Task Manager</title>
   </head>
   <body>
-    <h1 class="text-3xl  font-bold underline" >Hello world!</h1>
+    <header><h1>Task Manager</h1></header>
+    <main>
+      <section>
+        <div>
+          <label for="task">Task</label>
+          <input type="text" id="task" placeholder="Wash Clothes" />
+        </div>
+        <div>
+          <button type="button" class="btn-task">Enter</button>
+        </div>
+      </section>
+      <section>
+        <div>
+          <h3>Task</h3>
+        </div>
+        <div>
+          <ul>
+            <li>
+              Pick up food
+              <span
+                ><button>complete</button> <span><button>Delete</button></span>
+              </span>
+            </li>
+          </ul>
+        </div>
+      </section>
+    </main>
+
+    <script src="./app.js"></script>
   </body>
 </html>
