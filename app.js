@@ -1,5 +1,5 @@
 const btnTask = document.querySelector('.btn-task');
-
+// this class is to create objects of task
 class Task {
   constructor(task, isComplete = false) {
     this.task = task;
@@ -7,6 +7,7 @@ class Task {
   }
 }
 
+// This function takes in task and checks input value
 function createTask(task) {
   if (task !== '') {
     const newTask = new Task(task);
@@ -14,9 +15,7 @@ function createTask(task) {
   }
   alert('You Must Enter Task');
 }
-
-const task = createTask('Run 3 miles everyday!');
-
+// Store tasks in localStorage
 const addTaskToLocalStorage = (task) => {
   const existingTasks = JSON.parse(localStorage.getItem('tasks')) || [];
 
@@ -25,6 +24,24 @@ const addTaskToLocalStorage = (task) => {
   localStorage.setItem('tasks', JSON.stringify(existingTasks));
 };
 
+// display each task to the page
+const displayTasks = () => {
+  const tasksEl = document.getElementById('tasks');
+  const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+
+  const task = tasks.map((value, index) => {
+    return `<li>${value.task}
+
+              <span
+                ><button ${value.isComplete}>complete</button> <span><button ${index}>Delete</button></span>
+              </span>
+
+            </li>`;
+  });
+  tasksEl.insertAdjacentHTML('beforeend', task.join(''));
+};
+
+// Event for adding task
 btnTask.addEventListener('click', () => {
   const taskInput = document.querySelector('#task');
 
@@ -33,4 +50,4 @@ btnTask.addEventListener('click', () => {
   addTaskToLocalStorage(task);
 });
 
-console.log('duke');
+displayTasks();
